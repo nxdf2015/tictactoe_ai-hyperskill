@@ -11,12 +11,21 @@ empty = " "
 init_state = empty * 9#  "_________"
 
 
+def select_player(name):
+    if name == "easy":
+        return Computer
+    else:
+        return Human
+
 
 class Game:
     symbols=[x,o]
-    def __init__(self,cells=init_state):
+    def __init__(self,* player_names  , cells=init_state):
         self.board = Board(cells)
-        self.players = [Human(0),Computer(1)]
+        print(player_names)
+        players_list = list(map(select_player, player_names))
+        print(players_list)
+        self.players = [players_list[0](0),players_list[1](1)]
         self.current = 0
 
     def next_player(self):
@@ -30,7 +39,7 @@ class Game:
         while True:
             player = self.players[self.current]
             for position in player.play():
-                if self.board.is_valid_coordinate(position,show = player.id == 0):
+                if self.board.is_valid_coordinate(position,show = player.show):
                     break
             self.board.play(position,self.symbols[player.id])
             print(self.board)

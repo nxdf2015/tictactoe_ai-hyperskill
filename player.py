@@ -8,6 +8,10 @@ class Human :
     def __init__(self,id):
         self.id =id
 
+    @property
+    def show(self):
+        return True
+
     def play(self):
         while True:
             position =  input("Enter the coordinates: ")
@@ -19,6 +23,10 @@ class Human :
 class Computer:
     def __init__(self,id):
         self.id = id
+
+    @property
+    def show(self):
+        return False
 
     def play(self):
         print('Making move level "easy"')
