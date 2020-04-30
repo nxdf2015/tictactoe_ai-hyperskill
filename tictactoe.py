@@ -1,7 +1,7 @@
 
 import sys
 
-sys.path = ["C:\\Users\\nique\\PycharmProjects\\Tic-Tac-Toe with AI\\Tic-Tac-Toe with AI\\task\\tictactoe"]+sys.path
+
 from game import Game
 
 def get_option():
