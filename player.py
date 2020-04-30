@@ -1,9 +1,8 @@
 from abc import abstractmethod
 from random import randint
 
-x = "X"
-o = "O"
-empty = " "
+from  helper import x,o,empty,position_to_string,other
+
 
 class Player:
     def __init__(self,id):
@@ -47,7 +46,11 @@ class Computer(Player):
 
 
 class Easy(Computer):
-     def play(self):
+    """
+    player level 'easy'
+    select a random position in the board
+    """
+    def play(self):
         print('Making move level "easy"')
         while True:
             col =randint(0,3)
@@ -56,15 +59,15 @@ class Easy(Computer):
 
 
 
-def other(current):
-    """
-    helper return other player x <-> o
-    """
-    return x if current == o else x
 
 
 class Medium(Computer):
-
+    """
+    player level 'medium' :
+    If it can win in one move (if it has two in a row), it places a third to get three in a row and win.
+    If the opponent can win in one move, it plays the third itself to block the opponent to win.
+    Otherwise, it makes a random move.
+    """
     def __init__(self,name,board):
         super().__init__(name)
         self.board = board
@@ -74,19 +77,6 @@ class Medium(Computer):
         position = self.find_win() or self.find_win(current=False)
         if position:
             yield position
-        # win_current = self.find_win()
-        # print(win_current)
-        #
-        # if win_current:
-        #     print(win_current)
-        #     yield win_current
-        #
-        # win_other =  self.find_win(current=False)
-        # if win_other:
-        #
-        #     yield win_other
-
-
         while True:
             col =randint(1, 3)
             row = randint(1 , 3)
@@ -110,12 +100,7 @@ class Medium(Computer):
          return False
 
 
-def position_to_string(row,col):
-    return f"{col + 1} {3 -  row }"
 
 
-if __name__=="__main__":
-    for row,col in [(0,0),(2,0),(2,2)]:
-        print(f"({row},{col}) : {position_to_string(row,col)}")
 
 

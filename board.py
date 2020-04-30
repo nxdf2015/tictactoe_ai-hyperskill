@@ -1,28 +1,9 @@
 
-# players
-x = "X"
-o = "O"
-
-# empty cell
-empty = " "
+from helper import x,o,empty,findPlayer,string_to_position,board_to_string
 
 
 
 
-def findPlayer(cells):
-    return x if cells.count(o) == cells.count(x) else o
-
-
-def board_to_string(board):
-     rows = [ f'| {" ".join(row)} |' for row in board]
-     size = len(rows[0])
-     head = "-" * size
-     return "\n".join([head ] +rows +[head])
-
-
-def string_to_position(position):
-    col,row = list(map(int, position.split(" ")))
-    return (col -1 , 3 - row)
 
 
 

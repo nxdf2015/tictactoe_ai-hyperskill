@@ -2,10 +2,7 @@ from board import Board
 
 from player import Easy,Human,Medium,Player
 
-x = "X"
-o = "O"
-empty = " "
-
+from helper import x,o,empty
 
 
 init_state = empty * 9#  "_________"
