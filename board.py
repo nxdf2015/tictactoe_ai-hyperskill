@@ -96,6 +96,16 @@ class Board :
     def diags(self):
         return ["".join([self.board[i][i] for i in range(3)]),"".join([ self.board[2 - i][i] for i in range(3)])]
 
+    def get_board(self):
+        return { "rows" : self.rows() , "cols" : self.cols() , "diags" : self.diags()}
+
+    def __getitem__(self, item):
+        if item == "rows":
+            return self.rows()
+        elif item == "cols":
+            return self.cols()
+        else:
+            return self.diags()
 
     def has_empty_cell(self):
         return not "".join([ "".join(row) for row in self.board]).find(empty) == -1
