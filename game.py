@@ -1,13 +1,9 @@
 from board import Board
-
-from player import Easy,Human,Medium,Player
-
+from player import Player
 from helper import x,o,empty
 
 
 init_state = empty * 9#  "_________"
-
-
 
 
 
@@ -32,9 +28,13 @@ class Game:
 
         while True:
             player = self.players[self.current]
+
             for position in player.play():
+
+                print(position)
                 if self.board.is_valid_coordinate(position,show = player.show):
                     break
+
             self.board.play(position, player.id)
             print(self.board)
             status = self.board.get_status( player.id)

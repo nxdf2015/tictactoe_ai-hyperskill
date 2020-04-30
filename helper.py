@@ -17,7 +17,8 @@ def other(current):
     """
     helper return other player
     """
-    return x if current == o else x
+
+    return x if current == o else o
 
 
 def findPlayer(cells):
